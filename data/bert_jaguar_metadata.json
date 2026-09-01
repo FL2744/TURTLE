@@ -1,0 +1,56 @@
+{
+  "model": "google-bert/bert-base-uncased",
+  "examples": [
+    {
+      "key": "animal",
+      "label": "Jaguar \u00b7 animal",
+      "sentence": "The jaguar rested quietly in the jungle.",
+      "target_word": "jaguar",
+      "shape": [
+        13,
+        768
+      ],
+      "tokens": [
+        "[CLS]",
+        "the",
+        "jaguar",
+        "rested",
+        "quietly",
+        "in",
+        "the",
+        "jungle",
+        ".",
+        "[SEP]"
+      ],
+      "target_token_indices": [
+        2
+      ]
+    },
+    {
+      "key": "car",
+      "label": "Jaguar \u00b7 automobile",
+      "sentence": "The Jaguar accelerated quickly out of the garage.",
+      "target_word": "Jaguar",
+      "shape": [
+        13,
+        768
+      ],
+      "tokens": [
+        "[CLS]",
+        "the",
+        "jaguar",
+        "accelerated",
+        "quickly",
+        "out",
+        "of",
+        "the",
+        "garage",
+        ".",
+        "[SEP]"
+      ],
+      "target_token_indices": [
+        2
+      ]
+    }
+  ]
+}
