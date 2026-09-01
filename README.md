@@ -1,4 +1,4 @@
-# TURTLE
+# TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings
 
 TURTLE compares three ways of turning latent representations into visible 3D
 paths, including a bundled demonstration made from real BERT hidden states.
