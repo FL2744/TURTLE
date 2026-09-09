@@ -1,3 +1,4 @@
+![turtle logo](turtle-visual.png)
 # TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings
 
 TURTLE compares three ways of turning latent representations into visible 3D
