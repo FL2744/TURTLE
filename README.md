@@ -4,6 +4,8 @@
 TURTLE compares three ways of turning latent representations into visible 3D
 paths, including a bundled demonstration made from real BERT hidden states.
 
+A web implementation can be found here: https://l1001.vt.domains/turtle.html
+
 ## Three modes
 
 ### Glyph mode — encoding
