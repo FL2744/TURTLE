@@ -1,0 +1,192 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{10}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Abelson and diSessa(1981)]%
+        {abelson}
+\bibfield{author}{\bibinfo{person}{H. Abelson} {and} \bibinfo{person}{A.~A.
+  diSessa}.} \bibinfo{year}{1981}\natexlab{}.
+\newblock \bibinfo{title}{{Turtle Geometry: The Computer as a Medium for
+  Exploring Mathematics}}.
+\newblock
+\newblock
+\newblock
+\shownote{MIT Press}.
+
+
+\bibitem[Devlin et~al\mbox{.}(2019)]%
+        {devlin}
+\bibfield{author}{\bibinfo{person}{J. Devlin}, \bibinfo{person}{M.-W. Chang},
+  \bibinfo{person}{K. Lee}, {and} \bibinfo{person}{K. Toutanova}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \bibinfo{title}{{BERT: Pre-training of Deep Bidirectional
+  Transformers for Language Understanding}}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.18653/v1/N19-1423}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{NAACL-HLT, 4171--4186}.
+
+
+\bibitem[Ethayarajh(2019)]%
+        {ethayarajh}
+\bibfield{author}{\bibinfo{person}{K. Ethayarajh}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \bibinfo{title}{{How Contextual Are Contextualized Word
+  Representations? Comparing the Geometry of BERT, ELMo, and GPT-2
+  Embeddings}}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.18653/v1/D19-1006}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{EMNLP-IJCNLP, 55--65}.
+
+
+\bibitem[Goldman et~al\mbox{.}(2004)]%
+        {goldman}
+\bibfield{author}{\bibinfo{person}{R. Goldman}, \bibinfo{person}{S. Schaefer},
+  {and} \bibinfo{person}{T. Ju}.} \bibinfo{year}{2004}\natexlab{}.
+\newblock \bibinfo{title}{{Turtle Geometry in Computer Graphics and
+  Computer-Aided Design}}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1016/j.cad.2003.10.005}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{Computer-Aided Design 36(14), 1471--1482}.
+
+
+\bibitem[Hanson(1994)]%
+        {hanson1994}
+\bibfield{author}{\bibinfo{person}{A.~J. Hanson}.}
+  \bibinfo{year}{1994}\natexlab{}.
+\newblock \bibinfo{title}{{Geometry for N-dimensional Graphics}}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1016/B978-0-12-336156-1.50024-0}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{In Graphics Gems IV, P. S. Heckbert (Ed.). Academic Press}.
+
+
+\bibitem[Hanson(1995)]%
+        {hanson1995}
+\bibfield{author}{\bibinfo{person}{A.~J. Hanson}.}
+  \bibinfo{year}{1995}\natexlab{}.
+\newblock \bibinfo{title}{{Rotations for N-dimensional Graphics}}.
+\newblock
+\newblock
+\newblock
+\shownote{In Graphics Gems V, A. W. Paeth (Ed.). Academic Press}.
+
+
+\bibitem[Jolliffe and Cadima(2016)]%
+        {jolliffe}
+\bibfield{author}{\bibinfo{person}{I.~T. Jolliffe} {and} \bibinfo{person}{J.
+  Cadima}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \bibinfo{title}{{Principal Component Analysis: A Review and Recent
+  Developments}}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1098/rsta.2015.0202}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{Philosophical Transactions of the Royal Society A 374(2065),
+  20150202}.
+
+
+\bibitem[Taggart(2026)]%
+        {taggart}
+\bibfield{author}{\bibinfo{person}{William Taggart}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \bibinfo{title}{{TURTLE: Trajectory-based Understanding and Rendering
+  of Transformations in Latent Embeddings}}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://github.com/FL2744/TURTLE}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{Computer software. GitHub}.
+
+
+\bibitem[Tenney et~al\mbox{.}(2019)]%
+        {tenney}
+\bibfield{author}{\bibinfo{person}{I. Tenney}, \bibinfo{person}{D. Das}, {and}
+  \bibinfo{person}{E. Pavlick}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \bibinfo{title}{{BERT Rediscovers the Classical NLP Pipeline}}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.18653/v1/P19-1452}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{ACL, 4593--4601}.
+
+
+\bibitem[Verhoeff(2010)]%
+        {verhoeff}
+\bibfield{author}{\bibinfo{person}{T. Verhoeff}.}
+  \bibinfo{year}{2010}\natexlab{}.
+\newblock \bibinfo{title}{{3D Turtle Geometry: Artwork, Theory, Program
+  Equivalence and Symmetry}}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1504/IJART.2010.032569}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{International Journal of Arts and Technology 3(2--3), 288--319}.
+
+
+\end{thebibliography}

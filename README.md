@@ -1,4 +1,6 @@
 ![turtle logo](turtle-visual.png)
+
+**ACM technical paper:** [PDF](paper/TURTLE.pdf) · [Markdown](paper/TECHNICAL_PAPER.md) · [LaTeX](paper/main.tex) · [Complete LaTeX package](paper/TURTLE-ACM-source.zip)
 # TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings
 
 TURTLE compares three ways of turning latent representations into visible 3D
