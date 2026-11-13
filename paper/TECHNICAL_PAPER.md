@@ -140,6 +140,10 @@ The most promising direction is the third mode. When successive turtle positions
 
 The current TURTLE implementation, demonstration data, extraction script, dependency files, and standalone visualization are publicly available in the FL2744/TURTLE GitHub repository: https://github.com/FL2744/TURTLE.
 
+## AI-use disclosure
+
+The original report records implementation assistance from OpenAI Codex and GPT-5.6. This ACM manuscript edition was prepared with assistance from Codex. William Taggart is responsible for the final text and its claims. AI assistance does not constitute independent validation of the implementation or scientific interpretation.
+
 ## References
 
 <a id="ref-abelson"></a>
@@ -181,10 +185,6 @@ The current TURTLE implementation, demonstration data, extraction script, depend
 <a id="ref-taggart"></a>
 
 10. William Taggart. 2026. *TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings*. Computer software. GitHub. [https://github.com/FL2744/TURTLE](https://github.com/FL2744/TURTLE).
-
-## AI-use disclosure
-
-The original report records implementation assistance from OpenAI Codex and GPT-5.6. This ACM manuscript edition was prepared with assistance from Codex. William Taggart is responsible for the final text and its claims. AI assistance does not constitute independent validation of the implementation or scientific interpretation.
 
 ## Suggested citation
 
