@@ -11,28 +11,6 @@
     "caption": "Glyph mode turns the displayed 768-dimensional vector into a three-dimensional turtle path using a 45-degree consecutive angle."
   },
   {
-    "file": "figures/screenshot-02.png",
-    "source": "turtle-02.jpg",
-    "crop": [
-      8,
-      8,
-      1272,
-      710
-    ],
-    "caption": "Geometric mode displays the n-dimensional walk projected into three dimensions by PCA."
-  },
-  {
-    "file": "figures/screenshot-03.png",
-    "source": "turtle-03.jpg",
-    "crop": [
-      8,
-      8,
-      1272,
-      710
-    ],
-    "caption": "Trajectory mode displays bundled BERT hidden states for jaguar in animal and automobile contexts using a shared PCA projection."
-  },
-  {
     "file": "figures/screenshot-04.png",
     "source": "turtle-04.jpg",
     "crop": [

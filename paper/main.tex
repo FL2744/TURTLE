@@ -20,7 +20,7 @@
 \setlength{\intextsep}{12pt plus 2pt minus 3pt}
 \raggedbottom
 
-\geometry{top=0.75in,bottom=0.65in,includeheadfoot}
+\geometry{left=1in,right=1in,top=0.75in,bottom=0.65in,includeheadfoot}
 \begin{document}
 \title{TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings}
 \author{William Taggart}
@@ -46,13 +46,6 @@ TURTLE - Trajectory-based Understanding and Rendering of Transformations in Late
 \section{Mathematical Foundation}\label{mathematical-foundation}
 
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=0.94\linewidth,height=0.58\textheight,keepaspectratio]{figures/screenshot-02.png}
-\caption{Geometric mode displays the n-dimensional walk projected into three dimensions by PCA.}
-\Description{Geometric mode displays the n-dimensional walk projected into three dimensions by PCA.}
-\label{fig:app-screen-2}
-\end{figure}
 Let an embedding or hidden representation be a vector v in \(\mathbb{R}^n\). A turtle position at step t is represented by \(p_t\) in \(\mathbb{R}^n\), and a displacement by \(\Delta p_t\). The generic movement rule is
 
 \[p_{t+1}=p_t+\Delta p_t.\]
@@ -67,7 +60,7 @@ The current implementation uses PCA, computed through singular-value decompositi
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.94\textwidth]{figures/illustration-01.pdf}
+\includegraphics[width=0.84\textwidth]{figures/illustration-01.pdf}
 \caption{Mode taxonomy. Glyphs encode a vector, geometric mode projects a coordinate-wise walk, and trajectory mode projects ordered model states. The modes should not be interpreted interchangeably.}
 \Description{Three modes, three different interpretations. Mode taxonomy. Glyphs encode a vector, geometric mode projects a coordinate-wise walk, and trajectory mode projects ordered model states. The modes should not be interpreted interchangeably.}
 \label{fig:illustration-1}
@@ -76,13 +69,6 @@ The current implementation uses PCA, computed through singular-value decompositi
 \section{TURTLE Modes}\label{turtle-modes}
 
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=0.94\linewidth,height=0.58\textheight,keepaspectratio]{figures/screenshot-01.png}
-\caption{Glyph mode turns the displayed 768-dimensional vector into a three-dimensional turtle path using a 45-degree consecutive angle.}
-\Description{Glyph mode turns the displayed 768-dimensional vector into a three-dimensional turtle path using a 45-degree consecutive angle.}
-\label{fig:app-screen-1}
-\end{figure}
 The current implementation deliberately distinguishes three modes so that artistic encoding, geometric projection, and model-state analysis are not conflated.
 
 \subsection{Glyph mode: turtle encoding}\label{glyph-mode-turtle-encoding}
@@ -92,6 +78,14 @@ Glyph mode retains the original pedagogical prototype. For each scalar coordinat
 \[v\in\mathbb{R}^n\mapsto G(v)\in\{\text{3D polygonal paths}\}.\]
 
 This mode creates a distinctive turtle signature from a vector, but it is an encoding rather than a projection of the vector's native geometry. Some visible structure, especially depth, is introduced by the encoding algorithm. For that reason, TURTLE labels this mode as Encoding and permits decorative operations such as twisting, smoothing, expansion, and interactive deformation only here.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.84\linewidth,height=0.58\textheight,keepaspectratio]{figures/screenshot-01.png}
+\caption{Glyph mode turns the displayed 768-dimensional vector into a three-dimensional turtle path using a 45-degree consecutive angle.}
+\Description{Glyph mode turns the displayed 768-dimensional vector into a three-dimensional turtle path using a 45-degree consecutive angle.}
+\label{fig:app-screen-1}
+\end{figure}
 
 \subsection{Geometric mode: literal n-dimensional coordinate walk}\label{geometric-mode-literal-n-dimensional-coordinate-walk}
 
@@ -119,18 +113,13 @@ Here the order is intrinsic to the computation: layer l precedes layer \(l+1\). 
 \section{Proof-of-Concept: Contextual Trajectories in BERT}\label{proof-of-concept-contextual-trajectories-in-bert}
 
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=0.94\linewidth,height=0.58\textheight,keepaspectratio]{figures/screenshot-03.png}
-\caption{Trajectory mode displays bundled BERT hidden states for jaguar in animal and automobile contexts using a shared PCA projection.}
-\Description{Trajectory mode displays bundled BERT hidden states for jaguar in animal and automobile contexts using a shared PCA projection.}
-\label{fig:app-screen-3}
-\end{figure}
 The current repository contains a reproducible demonstration built from \nolinkurl{google-bert/bert-base-uncased}, the 12-layer, 768-hidden-dimension BERT-base model described by \citep{devlin}. TURTLE extracts the representation of the word `jaguar' in two sentences: `The jaguar rested quietly in the jungle.' and `The Jaguar accelerated quickly out of the garage.' The first context selects the animal sense, while the second selects the automobile sense.
 
 The extraction script requests hidden states from the model and gathers the target word's representation from the embedding output and each of the 12 transformer blocks, producing a \(13\times768\) matrix for each sentence. If a target word occupies multiple subword tokens, the implementation mean-pools the corresponding subword-token representations at each layer. The resulting matrices and provenance metadata are stored with the project so that the demonstration can be reproduced.
 
 For comparative visualization, TURTLE does not fit PCA separately to the two contextual trajectories. Instead, the \(13\times768\) matrices are concatenated, a single PCA basis is fit to the combined set, and the projected points are then separated back into two paths. This shared basis is essential: two independent PCA solutions would have unrelated axes, making visual comparisons of orientation or relative position potentially misleading. In the shared projection, both paths inhabit the same three-dimensional coordinate system.
+
+The displayed comparison consists of two ordered paths, one for each sentence. Consecutive points follow the embedding output and transformer-layer outputs, so the connecting lines encode computational order rather than a continuous motion observed inside the model. Their relative positions are meaningful only within the shared projection and remain subject to the information loss introduced by PCA.
 
 The demonstration should not be interpreted as evidence that three dimensions recover the full geometry of BERT's 768-dimensional hidden states. Its purpose is narrower: to show that TURTLE can accept genuine model representations, preserve their computational ordering, and render their transformations as an inspectable path. The most important object remains the original high-dimensional trajectory; the three-dimensional view is an interface to it.
 
@@ -138,18 +127,19 @@ The demonstration should not be interpreted as evidence that three dimensions re
 \section{Implementation}\label{implementation}
 
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=0.94\linewidth,height=0.58\textheight,keepaspectratio]{figures/screenshot-04.png}
-\caption{Glyph mode after changing the consecutive angle to 90 degrees, illustrating how the same encoding controls alter the displayed path.}
-\Description{Glyph mode after changing the consecutive angle to 90 degrees, illustrating how the same encoding controls alter the displayed path.}
-\label{fig:app-screen-4}
-\end{figure}
 The open-source implementation is written primarily in Python with an embedded browser-based visualization layer. The repository currently provides \nolinkurl{TURTLE.py}, a BERT extraction utility, reproducibility metadata and hidden-state data, dependency files, and a standalone GitHub Pages build. The software supports local Python execution as well as notebook environments.
 
 Three functions capture the core scientific operations. \nolinkurl{embedding_to_nd_walk} constructs the coordinate-wise n-dimensional path whose endpoint is the original vector. \nolinkurl{representation_trajectory_to_3d} projects an arbitrary matrix of successive model states into three PCA dimensions. \nolinkurl{project_trajectories_shared} concatenates multiple trajectories before projection so that comparative paths use the same PCA basis. These functions separate the underlying geometric operations from the interactive display layer.
 
 The implementation also enforces an interpretive boundary in the interface. Decorative transformations are disabled for data-derived geometric projections and model trajectories, while they remain available in glyph mode. This design choice reduces the risk that a user will mistake a manually altered curve for a projection of the source representation.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.84\linewidth,height=0.58\textheight,keepaspectratio]{figures/screenshot-04.png}
+\caption{Glyph mode after changing the consecutive angle to 90 degrees, illustrating how the same encoding controls alter the displayed path.}
+\Description{Glyph mode after changing the consecutive angle to 90 degrees, illustrating how the same encoding controls alter the displayed path.}
+\label{fig:app-screen-4}
+\end{figure}
 
 \subsection{Algorithm 1. Coordinate-walk projection}\label{algorithm-1.-coordinate-walk-projection}
 
