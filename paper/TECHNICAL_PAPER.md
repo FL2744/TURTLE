@@ -4,7 +4,7 @@ William Taggart
 Modern and Classical Languages and Literatures, Virginia Tech  
 wtaggart@vt.edu
 
-Report date: November 13, 2026
+Report date: November 14, 2026
 
 ## Abstract
 
@@ -200,7 +200,6 @@ The original report records implementation assistance from OpenAI Codex and GPT-
 10. William Taggart. 2026. *TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings*. Computer software. GitHub. [https://github.com/FL2744/TURTLE](https://github.com/FL2744/TURTLE).
 11. McInnes, Leland, Healy, John, Melville, James (2018). [UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction](https://arxiv.org/abs/1802.03426). DOI: 10.48550/arXiv.1802.03426.
 
-
 ## Suggested citation
 
-William Taggart. 2026. TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings. Technical report. Modern and Classical Languages and Literatures, Virginia Tech. November 13, 2026. https://github.com/FL2744/TURTLE
+William Taggart. 2026. TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings. Technical report. Modern and Classical Languages and Literatures, Virginia Tech. November 14, 2026. https://github.com/FL2744/TURTLE
