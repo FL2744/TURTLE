@@ -2,7 +2,7 @@
 
 <div align="left">
 
-**Technical paper:** [PDF](paper/TURTLE.pdf) · [Markdown](paper/TECHNICAL_PAPER.md) · [LaTeX](paper/main.tex) · [Complete LaTeX package](paper/TURTLE-ACM-source.zip) · [Figures and source](paper/)
+**Technical paper:** [PDF](paper/TURTLE.pdf) · [Markdown](paper/TECHNICAL_PAPER.md) · [LaTeX](paper/main.tex) · [Complete LaTeX package](paper/TURTLE-source.zip) · [Figures and source](paper/)
 
 </div>
 # TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings
