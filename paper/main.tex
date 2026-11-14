@@ -42,7 +42,6 @@ TURTLE separates these questions. The computational trajectory may remain in the
 
 The current implementation uses PCA, computed through singular-value decomposition of centered trajectory points. PCA constructs orthogonal components that successively maximize variance, providing a standard linear method for reducing dimensionality while retaining as much variance as possible in the chosen number of components \citep{jolliffe}. The visible path should therefore be understood as a three-dimensional shadow of a higher-dimensional trajectory, not as the trajectory itself.
 
-
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/illustration-01.pdf}
@@ -85,7 +84,6 @@ The displacement between successive layers is
 
 Here the order is intrinsic to the computation: layer l precedes layer \(l+1\). Prior work has shown that contextual representations change substantially across contexts and layers, and has found evidence that different kinds of linguistic information are distributed differently across BERT's depth \citep{ethayarajh, tenney}. TURTLE provides a direct geometric visualization of such layerwise change rather than reducing each state to an isolated point without an explicit path.
 
-
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/illustration-02.pdf}
@@ -103,7 +101,6 @@ The extraction script requests hidden states from the model and gathers the targ
 For comparative visualization, TURTLE does not fit PCA separately to the two contextual trajectories. Instead, the \(13\times768\) matrices are concatenated, a single PCA basis is fit to the combined set, and the projected points are then separated back into two paths. This shared basis is essential: two independent PCA solutions would have unrelated axes, making visual comparisons of orientation or relative position potentially misleading. In the shared projection, both paths inhabit the same three-dimensional coordinate system.
 
 The demonstration should not be interpreted as evidence that three dimensions recover the full geometry of BERT's 768-dimensional hidden states. Its purpose is narrower: to show that TURTLE can accept genuine model representations, preserve their computational ordering, and render their transformations as an inspectable path. The most important object remains the original high-dimensional trajectory; the three-dimensional view is an interface to it.
-
 
 \begin{figure}[htbp]
 \centering
@@ -144,7 +141,6 @@ split the projected matrix back into H_1,...,H_m paths
 return comparable 3D trajectories
 \end{verbatim}
 
-
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/illustration-04.pdf}
@@ -160,7 +156,6 @@ TURTLE can be extended beyond the BERT homonym demonstration in several directio
 The framework is also compatible with richer measurements than simple visual inspection. At each step, one can calculate Euclidean displacement, cosine similarity, path length, turning angles in the full space, or distances between paired trajectories. The visualization can then be treated as a companion to quantitative analysis rather than as a substitute for it. This is particularly important because contextual representation spaces are anisotropic and because low-dimensional projections can distort distances and neighborhoods \citep{ethayarajh}.
 
 A further application is pedagogical. Conventional diagrams often present embeddings as static dots in a semantic map. TURTLE instead foregrounds movement: representations occupy positions, transformations create displacements, and sequences of transformations create trajectories. This can provide an intuitive bridge from elementary vector arithmetic to the layerwise dynamics of transformer models.
-
 
 \begin{figure}[htbp]
 \centering
@@ -196,12 +191,12 @@ The current TURTLE implementation, demonstration data, extraction script, depend
 \nocite{taggart}
 
 \section*{AI-use disclosure}
-The original report records implementation assistance from OpenAI Codex and GPT-5.6. This ACM manuscript edition was prepared with assistance from Codex. William Taggart is responsible for the final text and its claims. AI assistance does not constitute independent validation of the implementation or scientific interpretation.
+The original report records implementation assistance from OpenAI Codex and GPT-5.6. This report was prepared with assistance from Codex. William Taggart is responsible for the final text and its claims. AI assistance does not constitute independent validation of the implementation or scientific interpretation.
 
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{references}
 
 \section*{Suggested citation}
-William Taggart. 2026. TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings. Technical report. Modern and Classical Languages and Literatures, Virginia Tech. ACM manuscript edition, November 13, 2026. https://github.com/FL2744/TURTLE
+William Taggart. 2026. TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings. Technical report. Modern and Classical Languages and Literatures, Virginia Tech. November 13, 2026. https://github.com/FL2744/TURTLE
 
 \end{document}
