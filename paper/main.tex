@@ -7,6 +7,20 @@
 \DefineVerbatimEnvironment{verbatim}{Verbatim}{breaklines=true,fontsize=\small}
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \usepackage{graphicx,float}
+
+% Permit figures to share pages with surrounding explanatory text.
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.06}
+\renewcommand{\floatpagefraction}{0.80}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{5}
+\setlength{\textfloatsep}{12pt plus 2pt minus 3pt}
+\setlength{\intextsep}{12pt plus 2pt minus 3pt}
+\raggedbottom
+
+\geometry{top=0.75in,bottom=0.65in,includeheadfoot}
 \begin{document}
 \title{TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings}
 \author{William Taggart}
@@ -28,39 +42,17 @@ Turtle geometry offers a different conceptual starting point. In the classical f
 
 TURTLE - Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings - adapts this movement-centered perspective to neural representation spaces. The framework is designed around a simple shift in emphasis: an embedding can be treated not only as a point, but as a destination or state within a trajectory. A difference between representations can then be represented as a displacement, and a sequence of representations as a walk. Throughout this report, \emph{latent representations} refers collectively to embedding vectors and contextual hidden states; where the distinction matters, the more specific term is used. This report updates the original proposal to describe the working open-source implementation, including a proof-of-concept experiment using real BERT hidden states.
 
-\section{Application interface}
-The application exposes its principal operations through the following workspaces and controls.
-\begin{figure}[H]
+
+\section{Mathematical Foundation}\label{mathematical-foundation}
+
+
+\begin{figure}[!htb]
 \centering
-\includegraphics[width=\linewidth,height=0.70\textheight,keepaspectratio]{figures/screenshot-01.png}
-\caption{Glyph mode turns the displayed 768-dimensional vector into a three-dimensional turtle path using a 45-degree consecutive angle.}
-\Description{Glyph mode turns the displayed 768-dimensional vector into a three-dimensional turtle path using a 45-degree consecutive angle.}
-\label{fig:app-screen-1}
-\end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth,height=0.70\textheight,keepaspectratio]{figures/screenshot-02.png}
+\includegraphics[width=0.94\linewidth,height=0.58\textheight,keepaspectratio]{figures/screenshot-02.png}
 \caption{Geometric mode displays the n-dimensional walk projected into three dimensions by PCA.}
 \Description{Geometric mode displays the n-dimensional walk projected into three dimensions by PCA.}
 \label{fig:app-screen-2}
 \end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth,height=0.70\textheight,keepaspectratio]{figures/screenshot-03.png}
-\caption{Trajectory mode displays bundled BERT hidden states for jaguar in animal and automobile contexts using a shared PCA projection.}
-\Description{Trajectory mode displays bundled BERT hidden states for jaguar in animal and automobile contexts using a shared PCA projection.}
-\label{fig:app-screen-3}
-\end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth,height=0.70\textheight,keepaspectratio]{figures/screenshot-04.png}
-\caption{Glyph mode after changing the consecutive angle to 90 degrees, illustrating how the same encoding controls alter the displayed path.}
-\Description{Glyph mode after changing the consecutive angle to 90 degrees, illustrating how the same encoding controls alter the displayed path.}
-\label{fig:app-screen-4}
-\end{figure}
-
-\section{Mathematical Foundation}\label{mathematical-foundation}
-
 Let an embedding or hidden representation be a vector v in \(\mathbb{R}^n\). A turtle position at step t is represented by \(p_t\) in \(\mathbb{R}^n\), and a displacement by \(\Delta p_t\). The generic movement rule is
 
 \[p_{t+1}=p_t+\Delta p_t.\]
@@ -73,9 +65,9 @@ TURTLE separates these questions. The computational trajectory may remain in the
 
 The current implementation uses PCA, computed through singular-value decomposition of centered trajectory points. PCA constructs orthogonal components that successively maximize variance, providing a standard linear method for reducing dimensionality while retaining as much variance as possible in the chosen number of components \citep{jolliffe}. The visible path should therefore be understood as a three-dimensional shadow of a higher-dimensional trajectory, not as the trajectory itself.
 
-\begin{figure}[htbp]
+\begin{figure}[!htb]
 \centering
-\includegraphics[width=\textwidth]{figures/illustration-01.pdf}
+\includegraphics[width=0.94\textwidth]{figures/illustration-01.pdf}
 \caption{Mode taxonomy. Glyphs encode a vector, geometric mode projects a coordinate-wise walk, and trajectory mode projects ordered model states. The modes should not be interpreted interchangeably.}
 \Description{Three modes, three different interpretations. Mode taxonomy. Glyphs encode a vector, geometric mode projects a coordinate-wise walk, and trajectory mode projects ordered model states. The modes should not be interpreted interchangeably.}
 \label{fig:illustration-1}
@@ -83,6 +75,14 @@ The current implementation uses PCA, computed through singular-value decompositi
 
 \section{TURTLE Modes}\label{turtle-modes}
 
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.94\linewidth,height=0.58\textheight,keepaspectratio]{figures/screenshot-01.png}
+\caption{Glyph mode turns the displayed 768-dimensional vector into a three-dimensional turtle path using a 45-degree consecutive angle.}
+\Description{Glyph mode turns the displayed 768-dimensional vector into a three-dimensional turtle path using a 45-degree consecutive angle.}
+\label{fig:app-screen-1}
+\end{figure}
 The current implementation deliberately distinguishes three modes so that artistic encoding, geometric projection, and model-state analysis are not conflated.
 
 \subsection{Glyph mode: turtle encoding}\label{glyph-mode-turtle-encoding}
@@ -116,9 +116,16 @@ The displacement between successive layers is
 Here the order is intrinsic to the computation: layer l precedes layer \(l+1\). Prior work has shown that contextual representations change substantially across contexts and layers, and has found evidence that different kinds of linguistic information are distributed differently across BERT's depth \citep{ethayarajh, tenney}. TURTLE provides a direct geometric visualization of such layerwise change rather than reducing each state to an isolated point without an explicit path.
 
 
-
 \section{Proof-of-Concept: Contextual Trajectories in BERT}\label{proof-of-concept-contextual-trajectories-in-bert}
 
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.94\linewidth,height=0.58\textheight,keepaspectratio]{figures/screenshot-03.png}
+\caption{Trajectory mode displays bundled BERT hidden states for jaguar in animal and automobile contexts using a shared PCA projection.}
+\Description{Trajectory mode displays bundled BERT hidden states for jaguar in animal and automobile contexts using a shared PCA projection.}
+\label{fig:app-screen-3}
+\end{figure}
 The current repository contains a reproducible demonstration built from \nolinkurl{google-bert/bert-base-uncased}, the 12-layer, 768-hidden-dimension BERT-base model described by \citep{devlin}. TURTLE extracts the representation of the word `jaguar' in two sentences: `The jaguar rested quietly in the jungle.' and `The Jaguar accelerated quickly out of the garage.' The first context selects the animal sense, while the second selects the automobile sense.
 
 The extraction script requests hidden states from the model and gathers the target word's representation from the embedding output and each of the 12 transformer blocks, producing a \(13\times768\) matrix for each sentence. If a target word occupies multiple subword tokens, the implementation mean-pools the corresponding subword-token representations at each layer. The resulting matrices and provenance metadata are stored with the project so that the demonstration can be reproduced.
@@ -128,9 +135,16 @@ For comparative visualization, TURTLE does not fit PCA separately to the two con
 The demonstration should not be interpreted as evidence that three dimensions recover the full geometry of BERT's 768-dimensional hidden states. Its purpose is narrower: to show that TURTLE can accept genuine model representations, preserve their computational ordering, and render their transformations as an inspectable path. The most important object remains the original high-dimensional trajectory; the three-dimensional view is an interface to it.
 
 
-
 \section{Implementation}\label{implementation}
 
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.94\linewidth,height=0.58\textheight,keepaspectratio]{figures/screenshot-04.png}
+\caption{Glyph mode after changing the consecutive angle to 90 degrees, illustrating how the same encoding controls alter the displayed path.}
+\Description{Glyph mode after changing the consecutive angle to 90 degrees, illustrating how the same encoding controls alter the displayed path.}
+\label{fig:app-screen-4}
+\end{figure}
 The open-source implementation is written primarily in Python with an embedded browser-based visualization layer. The repository currently provides \nolinkurl{TURTLE.py}, a BERT extraction utility, reproducibility metadata and hidden-state data, dependency files, and a standalone GitHub Pages build. The software supports local Python execution as well as notebook environments.
 
 Three functions capture the core scientific operations. \nolinkurl{embedding_to_nd_walk} constructs the coordinate-wise n-dimensional path whose endpoint is the original vector. \nolinkurl{representation_trajectory_to_3d} projects an arbitrary matrix of successive model states into three PCA dimensions. \nolinkurl{project_trajectories_shared} concatenates multiple trajectories before projection so that comparative paths use the same PCA basis. These functions separate the underlying geometric operations from the interactive display layer.
@@ -161,7 +175,6 @@ return comparable 3D trajectories
 \end{verbatim}
 
 
-
 \section{Potential Research Applications}\label{potential-research-applications}
 
 TURTLE can be extended beyond the BERT homonym demonstration in several directions. First, layerwise trajectories can be compared for ambiguous words across contexts to study when representational paths diverge. Second, multilingual models could be used to compare translations or semantically aligned expressions across languages, provided that comparisons are performed within a shared representation space and with a shared projection basis. Third, prompt or sentence perturbations could be treated as controlled changes and their resulting trajectories compared quantitatively in the original space and visually in projection.
@@ -169,7 +182,6 @@ TURTLE can be extended beyond the BERT homonym demonstration in several directio
 The framework is also compatible with richer measurements than simple visual inspection. At each step, one can calculate Euclidean displacement, cosine similarity, path length, turning angles in the full space, or distances between paired trajectories. The visualization can then be treated as a companion to quantitative analysis rather than as a substitute for it. This is particularly important because contextual representation spaces are anisotropic and because low-dimensional projections can distort distances and neighborhoods \citep{ethayarajh}.
 
 A further application is pedagogical. Conventional diagrams often present embeddings as static dots in a semantic map. TURTLE instead foregrounds movement: representations occupy positions, transformations create displacements, and sequences of transformations create trajectories. This can provide an intuitive bridge from elementary vector arithmetic to the layerwise dynamics of transformer models.
-
 
 
 \section{Limitations and Scientific Cautions}\label{limitations-and-scientific-cautions}
@@ -200,10 +212,11 @@ The current TURTLE implementation, demonstration data, extraction script, depend
 \section*{AI-use disclosure}
 The original report records implementation assistance from OpenAI Codex and GPT-5.6. This report was prepared with assistance from Codex. William Taggart is responsible for the final text and its claims. AI assistance does not constitute independent validation of the implementation or scientific interpretation.
 
+\enlargethispage{2\baselineskip}
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{references}
 
 \section*{Suggested citation}
-William Taggart. 2026. TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings. Technical report. Modern and Classical Languages and Literatures, Virginia Tech. November 13, 2026. https://github.com/FL2744/TURTLE
+William Taggart. 2026. TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings. Technical report. Modern and Classical Languages and Literatures, Virginia Tech. November 13, 2026. \url{https://github.com/FL2744/TURTLE}
 
 \end{document}
