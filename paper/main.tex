@@ -20,7 +20,7 @@
 \setlength{\intextsep}{12pt plus 2pt minus 3pt}
 \raggedbottom
 
-\geometry{left=1in,right=1in,top=0.75in,bottom=0.65in,includeheadfoot}
+\geometry{left=1in,right=1in,top=0.65in,bottom=0.55in,includeheadfoot}
 \begin{document}
 \title{TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings}
 \author{William Taggart}
@@ -43,6 +43,10 @@ Turtle geometry offers a different conceptual starting point. In the classical f
 TURTLE - Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings - adapts this movement-centered perspective to neural representation spaces. The framework is designed around a simple shift in emphasis: an embedding can be treated not only as a point, but as a destination or state within a trajectory. A difference between representations can then be represented as a displacement, and a sequence of representations as a walk. Throughout this report, \emph{latent representations} refers collectively to embedding vectors and contextual hidden states; where the distinction matters, the more specific term is used. This report updates the original proposal to describe the working open-source implementation, including a proof-of-concept experiment using real BERT hidden states.
 
 
+\subsection{Research context}
+
+UMAP provides a nonlinear, neighborhood-based comparison for the shared PCA projection used here \cite{umap}. It is not an implemented TURTLE mode. Comparing projection stability and neighborhood preservation would help assess visualization choices; neither method independently validates semantic similarity in the underlying model states.
+
 \section{Mathematical Foundation}\label{mathematical-foundation}
 
 
@@ -60,7 +64,7 @@ The current implementation uses PCA, computed through singular-value decompositi
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.84\textwidth]{figures/illustration-01.pdf}
+\includegraphics[width=0.74\textwidth]{figures/illustration-01.pdf}
 \caption{Mode taxonomy. Glyphs encode a vector, geometric mode projects a coordinate-wise walk, and trajectory mode projects ordered model states. The modes should not be interpreted interchangeably.}
 \Description{Three modes, three different interpretations. Mode taxonomy. Glyphs encode a vector, geometric mode projects a coordinate-wise walk, and trajectory mode projects ordered model states. The modes should not be interpreted interchangeably.}
 \label{fig:illustration-1}
@@ -81,7 +85,7 @@ This mode creates a distinctive turtle signature from a vector, but it is an enc
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.84\linewidth,height=0.58\textheight,keepaspectratio]{figures/screenshot-01.png}
+\includegraphics[width=0.74\linewidth,height=0.58\textheight,keepaspectratio]{figures/screenshot-01.png}
 \caption{Glyph mode turns the displayed 768-dimensional vector into a three-dimensional turtle path using a 45-degree consecutive angle.}
 \Description{Glyph mode turns the displayed 768-dimensional vector into a three-dimensional turtle path using a 45-degree consecutive angle.}
 \label{fig:app-screen-1}
@@ -135,7 +139,7 @@ The implementation also enforces an interpretive boundary in the interface. Deco
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.84\linewidth,height=0.58\textheight,keepaspectratio]{figures/screenshot-04.png}
+\includegraphics[width=0.74\linewidth,height=0.58\textheight,keepaspectratio]{figures/screenshot-04.png}
 \caption{Glyph mode after changing the consecutive angle to 90 degrees, illustrating how the same encoding controls alter the displayed path.}
 \Description{Glyph mode after changing the consecutive angle to 90 degrees, illustrating how the same encoding controls alter the displayed path.}
 \label{fig:app-screen-4}

@@ -18,6 +18,10 @@ Turtle geometry offers a different conceptual starting point. In the classical f
 
 TURTLE - Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings - adapts this movement-centered perspective to neural representation spaces. The framework is designed around a simple shift in emphasis: an embedding can be treated not only as a point, but as a destination or state within a trajectory. A difference between representations can then be represented as a displacement, and a sequence of representations as a walk. Throughout this report, *latent representations* refers collectively to embedding vectors and contextual hidden states; where the distinction matters, the more specific term is used. This report updates the original proposal to describe the working open-source implementation, including a proof-of-concept experiment using real BERT hidden states.
 
+### Research context
+
+UMAP provides a nonlinear, neighborhood-based comparison for the shared PCA projection used here [McInnes, Healy, and Melville](https://arxiv.org/abs/1802.03426). It is not an implemented TURTLE mode. Comparing projection stability and neighborhood preservation would help assess visualization choices; neither method independently validates semantic similarity in the underlying model states.
+
 ## Mathematical Foundation
 
 Let an embedding or hidden representation be a vector v in $\mathbb{R}^n$. A turtle position at step t is represented by $p_t$ in $\mathbb{R}^n$, and a displacement by $\Delta p_t$. The generic movement rule is
@@ -196,6 +200,8 @@ The original report records implementation assistance from OpenAI Codex and GPT-
 <a id="ref-taggart"></a>
 
 10. William Taggart. 2026. *TURTLE: Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings*. Computer software. GitHub. [https://github.com/FL2744/TURTLE](https://github.com/FL2744/TURTLE).
+11. McInnes, Leland, Healy, John, Melville, James (2018). [UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction](https://arxiv.org/abs/1802.03426). DOI: 10.48550/arXiv.1802.03426.
+
 
 ## Suggested citation
 

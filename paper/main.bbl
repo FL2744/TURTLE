@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{10}
+\begin{thebibliography}{11}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -140,6 +140,22 @@
 \newblock
 \shownote{Philosophical Transactions of the Royal Society A 374(2065),
   20150202}.
+
+
+\bibitem[McInnes et~al\mbox{.}(2018)]%
+        {umap}
+\bibfield{author}{\bibinfo{person}{Leland McInnes}, \bibinfo{person}{John
+  Healy}, {and} \bibinfo{person}{James Melville}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \bibinfo{title}{{UMAP: Uniform Manifold Approximation and Projection
+  for Dimension Reduction}}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.48550/arXiv.1802.03426}
+\showDOI{\tempurl}
+\newblock
+\shownote{arXiv preprint}.
 
 
 \bibitem[Taggart(2026)]%
