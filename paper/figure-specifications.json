@@ -1,0 +1,92 @@
+[
+  [
+    "TURTLE Modes",
+    "Three modes, three different interpretations",
+    [
+      [
+        "Glyph",
+        "Coordinate-driven turns",
+        "Pedagogical encoding"
+      ],
+      [
+        "Geometric / Trajectory",
+        "Coordinate walk / layer states",
+        "PCA projection"
+      ]
+    ],
+    "Decorative transforms belong to Glyph mode, not data-derived projections",
+    "Mode taxonomy. Glyphs encode a vector, geometric mode projects a coordinate-wise walk, and trajectory mode projects ordered model states. The modes should not be interpreted interchangeably."
+  ],
+  [
+    "Proof-of-Concept: Contextual Trajectories in BERT",
+    "A coordinate walk ends at the original vector",
+    [
+      [
+        "p_0 = 0",
+        "p_1 = v_1 e_1",
+        "p_2 = v_1 e_1 + v_2 e_2"
+      ],
+      [
+        "Continue stored coordinate order",
+        "p_n = sum v_j e_j",
+        "p_n = v"
+      ]
+    ],
+    "The endpoint is fixed; intermediate positions depend on coordinate order",
+    "Coordinate-walk construction, shown symbolically rather than as measured model data. Permuting coordinates changes the chosen path even though its endpoint remains the input vector."
+  ],
+  [
+    "Implementation",
+    "Compare trajectories in one shared basis",
+    [
+      [
+        "Animal-context states",
+        "13 x 768 matrix",
+        "Concatenate both contexts"
+      ],
+      [
+        "Automobile-context states",
+        "13 x 768 matrix",
+        "Fit one centered PCA"
+      ]
+    ],
+    "Project together, then split back into two paths in the same three axes",
+    "Shared-PCA workflow for the reported BERT jaguar demonstration. Independent PCA fits would create unrelated coordinate systems and undermine direct visual comparison."
+  ],
+  [
+    "Potential Research Applications",
+    "Layer order supplies the trajectory",
+    [
+      [
+        "Embedding state h^(0)",
+        "Transformer state h^(1)",
+        "Continue through h^(12)"
+      ],
+      [
+        "Position: hidden state",
+        "Displacement: next minus prior",
+        "Render ordered 3D path"
+      ]
+    ],
+    "Model-state order is computational; it is not an arbitrary coordinate ordering",
+    "Trajectory-mode schematic. Each vertex is a token representation from an actual stage of the model; the arrows indicate successive state differences, not semantic labels for dimensions."
+  ],
+  [
+    "Limitations and Scientific Cautions",
+    "Separate measurement from the displayed shadow",
+    [
+      [
+        "Original high-dimensional states",
+        "Distances and displacements",
+        "Quantitative analysis"
+      ],
+      [
+        "Shared 3D PCA projection",
+        "Inspectable curves",
+        "Qualitative comparison"
+      ]
+    ],
+    "A 3D intersection or short distance need not exist in the original space",
+    "Interpretation guide. The projection is lossy and is an aid to exploration; quantitative geometric claims should be checked in the original representation space."
+  ]
+]

@@ -32,6 +32,11 @@ $$P:\mathbb{R}^n\to\mathbb{R}^3.$$
 
 The current implementation uses PCA, computed through singular-value decomposition of centered trajectory points. PCA constructs orthogonal components that successively maximize variance, providing a standard linear method for reducing dimensionality while retaining as much variance as possible in the chosen number of components [7](#ref-jolliffe). The visible path should therefore be understood as a three-dimensional shadow of a higher-dimensional trajectory, not as the trajectory itself.
 
+
+![Three modes, three different interpretations](figures/illustration-01.png)
+
+*Illustration 1. Mode taxonomy. Glyphs encode a vector, geometric mode projects a coordinate-wise walk, and trajectory mode projects ordered model states. The modes should not be interpreted interchangeably.*
+
 ## TURTLE Modes
 
 The current implementation deliberately distinguishes three modes so that artistic encoding, geometric projection, and model-state analysis are not conflated.
@@ -66,6 +71,11 @@ $$\Delta h^{(l)}=h^{(l+1)}-h^{(l)}.$$
 
 Here the order is intrinsic to the computation: layer l precedes layer $l+1$. Prior work has shown that contextual representations change substantially across contexts and layers, and has found evidence that different kinds of linguistic information are distributed differently across BERT's depth [3](#ref-ethayarajh); [8](#ref-tenney). TURTLE provides a direct geometric visualization of such layerwise change rather than reducing each state to an isolated point without an explicit path.
 
+
+![A coordinate walk ends at the original vector](figures/illustration-02.png)
+
+*Illustration 2. Coordinate-walk construction, shown symbolically rather than as measured model data. Permuting coordinates changes the chosen path even though its endpoint remains the input vector.*
+
 ## Proof-of-Concept: Contextual Trajectories in BERT
 
 The current repository contains a reproducible demonstration built from `google-bert/bert-base-uncased`, the 12-layer, 768-hidden-dimension BERT-base model described by [2](#ref-devlin). TURTLE extracts the representation of the word 'jaguar' in two sentences: 'The jaguar rested quietly in the jungle.' and 'The Jaguar accelerated quickly out of the garage.' The first context selects the animal sense, while the second selects the automobile sense.
@@ -75,6 +85,11 @@ The extraction script requests hidden states from the model and gathers the targ
 For comparative visualization, TURTLE does not fit PCA separately to the two contextual trajectories. Instead, the $13\times768$ matrices are concatenated, a single PCA basis is fit to the combined set, and the projected points are then separated back into two paths. This shared basis is essential: two independent PCA solutions would have unrelated axes, making visual comparisons of orientation or relative position potentially misleading. In the shared projection, both paths inhabit the same three-dimensional coordinate system.
 
 The demonstration should not be interpreted as evidence that three dimensions recover the full geometry of BERT's 768-dimensional hidden states. Its purpose is narrower: to show that TURTLE can accept genuine model representations, preserve their computational ordering, and render their transformations as an inspectable path. The most important object remains the original high-dimensional trajectory; the three-dimensional view is an interface to it.
+
+
+![Compare trajectories in one shared basis](figures/illustration-03.png)
+
+*Illustration 3. Shared-PCA workflow for the reported BERT jaguar demonstration. Independent PCA fits would create unrelated coordinate systems and undermine direct visual comparison.*
 
 ## Implementation
 
@@ -107,6 +122,11 @@ split the projected matrix back into H_1,...,H_m paths
 return comparable 3D trajectories
 ```
 
+
+![Layer order supplies the trajectory](figures/illustration-04.png)
+
+*Illustration 4. Trajectory-mode schematic. Each vertex is a token representation from an actual stage of the model; the arrows indicate successive state differences, not semantic labels for dimensions.*
+
 ## Potential Research Applications
 
 TURTLE can be extended beyond the BERT homonym demonstration in several directions. First, layerwise trajectories can be compared for ambiguous words across contexts to study when representational paths diverge. Second, multilingual models could be used to compare translations or semantically aligned expressions across languages, provided that comparisons are performed within a shared representation space and with a shared projection basis. Third, prompt or sentence perturbations could be treated as controlled changes and their resulting trajectories compared quantitatively in the original space and visually in projection.
@@ -114,6 +134,11 @@ TURTLE can be extended beyond the BERT homonym demonstration in several directio
 The framework is also compatible with richer measurements than simple visual inspection. At each step, one can calculate Euclidean displacement, cosine similarity, path length, turning angles in the full space, or distances between paired trajectories. The visualization can then be treated as a companion to quantitative analysis rather than as a substitute for it. This is particularly important because contextual representation spaces are anisotropic and because low-dimensional projections can distort distances and neighborhoods [3](#ref-ethayarajh).
 
 A further application is pedagogical. Conventional diagrams often present embeddings as static dots in a semantic map. TURTLE instead foregrounds movement: representations occupy positions, transformations create displacements, and sequences of transformations create trajectories. This can provide an intuitive bridge from elementary vector arithmetic to the layerwise dynamics of transformer models.
+
+
+![Separate measurement from the displayed shadow](figures/illustration-05.png)
+
+*Illustration 5. Interpretation guide. The projection is lossy and is an aid to exploration; quantitative geometric claims should be checked in the original representation space.*
 
 ## Limitations and Scientific Cautions
 

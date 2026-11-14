@@ -1,0 +1,37 @@
+[
+  {
+    "number": 1,
+    "title": "Three modes, three different interpretations",
+    "caption": "Mode taxonomy. Glyphs encode a vector, geometric mode projects a coordinate-wise walk, and trajectory mode projects ordered model states. The modes should not be interpreted interchangeably.",
+    "section_preceded": "TURTLE Modes",
+    "provenance": "Explanatory schematic derived from the report; not a screenshot or new experiment."
+  },
+  {
+    "number": 2,
+    "title": "A coordinate walk ends at the original vector",
+    "caption": "Coordinate-walk construction, shown symbolically rather than as measured model data. Permuting coordinates changes the chosen path even though its endpoint remains the input vector.",
+    "section_preceded": "Proof-of-Concept: Contextual Trajectories in BERT",
+    "provenance": "Explanatory schematic derived from the report; not a screenshot or new experiment."
+  },
+  {
+    "number": 3,
+    "title": "Compare trajectories in one shared basis",
+    "caption": "Shared-PCA workflow for the reported BERT jaguar demonstration. Independent PCA fits would create unrelated coordinate systems and undermine direct visual comparison.",
+    "section_preceded": "Implementation",
+    "provenance": "Explanatory schematic derived from the report; not a screenshot or new experiment."
+  },
+  {
+    "number": 4,
+    "title": "Layer order supplies the trajectory",
+    "caption": "Trajectory-mode schematic. Each vertex is a token representation from an actual stage of the model; the arrows indicate successive state differences, not semantic labels for dimensions.",
+    "section_preceded": "Potential Research Applications",
+    "provenance": "Explanatory schematic derived from the report; not a screenshot or new experiment."
+  },
+  {
+    "number": 5,
+    "title": "Separate measurement from the displayed shadow",
+    "caption": "Interpretation guide. The projection is lossy and is an aid to exploration; quantitative geometric claims should be checked in the original representation space.",
+    "section_preceded": "Limitations and Scientific Cautions",
+    "provenance": "Explanatory schematic derived from the report; not a screenshot or new experiment."
+  }
+]

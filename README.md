@@ -155,3 +155,11 @@ requirements-notebook.txt Optional notebook dependencies
 ## License
 
 MIT License. See `LICENSE`.
+
+<!-- illustrated-paper -->
+## Illustrated technical paper
+
+[PDF](paper/TURTLE.pdf) · [ACM LaTeX](paper/main.tex) · [Markdown](paper/TECHNICAL_PAPER.md) · [Figures and source](paper/)
+
+This edition includes at least five tightly cropped explanatory illustrations, with vector and raster assets and reproducible figure sources. The GH and HF paper files match.
+<!-- /illustrated-paper -->
