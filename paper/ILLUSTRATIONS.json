@@ -1,37 +1,51 @@
-[
-  {
-    "number": 1,
-    "title": "Three modes, three different interpretations",
-    "caption": "Mode taxonomy. Glyphs encode a vector, geometric mode projects a coordinate-wise walk, and trajectory mode projects ordered model states. The modes should not be interpreted interchangeably.",
-    "section_preceded": "TURTLE Modes",
-    "provenance": "Explanatory schematic derived from the report; not a screenshot or new experiment."
-  },
-  {
-    "number": 2,
-    "title": "A coordinate walk ends at the original vector",
-    "caption": "Coordinate-walk construction, shown symbolically rather than as measured model data. Permuting coordinates changes the chosen path even though its endpoint remains the input vector.",
-    "section_preceded": "Proof-of-Concept: Contextual Trajectories in BERT",
-    "provenance": "Explanatory schematic derived from the report; not a screenshot or new experiment."
-  },
-  {
-    "number": 3,
-    "title": "Compare trajectories in one shared basis",
-    "caption": "Shared-PCA workflow for the reported BERT jaguar demonstration. Independent PCA fits would create unrelated coordinate systems and undermine direct visual comparison.",
-    "section_preceded": "Implementation",
-    "provenance": "Explanatory schematic derived from the report; not a screenshot or new experiment."
-  },
-  {
-    "number": 4,
-    "title": "Layer order supplies the trajectory",
-    "caption": "Trajectory-mode schematic. Each vertex is a token representation from an actual stage of the model; the arrows indicate successive state differences, not semantic labels for dimensions.",
-    "section_preceded": "Potential Research Applications",
-    "provenance": "Explanatory schematic derived from the report; not a screenshot or new experiment."
-  },
-  {
-    "number": 5,
-    "title": "Separate measurement from the displayed shadow",
-    "caption": "Interpretation guide. The projection is lossy and is an aid to exploration; quantitative geometric claims should be checked in the original representation space.",
-    "section_preceded": "Limitations and Scientific Cautions",
-    "provenance": "Explanatory schematic derived from the report; not a screenshot or new experiment."
-  }
-]
+{
+  "screenshots": [
+    {
+      "file": "figures/screenshot-01.png",
+      "source": "turtle-01.jpg",
+      "crop": [
+        8,
+        8,
+        1272,
+        710
+      ],
+      "caption": "Glyph mode turns the displayed 768-dimensional vector into a three-dimensional turtle path using a 45-degree consecutive angle."
+    },
+    {
+      "file": "figures/screenshot-02.png",
+      "source": "turtle-02.jpg",
+      "crop": [
+        8,
+        8,
+        1272,
+        710
+      ],
+      "caption": "Geometric mode displays the n-dimensional walk projected into three dimensions by PCA."
+    },
+    {
+      "file": "figures/screenshot-03.png",
+      "source": "turtle-03.jpg",
+      "crop": [
+        8,
+        8,
+        1272,
+        710
+      ],
+      "caption": "Trajectory mode displays bundled BERT hidden states for jaguar in animal and automobile contexts using a shared PCA projection."
+    },
+    {
+      "file": "figures/screenshot-04.png",
+      "source": "turtle-04.jpg",
+      "crop": [
+        8,
+        8,
+        1272,
+        710
+      ],
+      "caption": "Glyph mode after changing the consecutive angle to 90 degrees, illustrating how the same encoding controls alter the displayed path."
+    }
+  ],
+  "retained_diagrams": [
+    1
+  ]
+}

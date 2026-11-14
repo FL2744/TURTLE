@@ -10,6 +10,24 @@ Report date: November 13, 2026
 
 Large language models represent tokens and contextual states in high-dimensional vector spaces that are difficult to inspect directly. This report presents TURTLE (Trajectory-based Understanding and Rendering of Transformations in Latent Embeddings), a framework that adapts ideas from turtle geometry to the visualization of vector embeddings and layerwise representation trajectories. TURTLE distinguishes three complementary modes. Glyph mode converts the coordinates of a vector into a three-dimensional turtle signature for pedagogical visualization. Geometric mode constructs a literal coordinate-wise walk in the original n-dimensional space and projects that walk into three dimensions using principal component analysis (PCA). Trajectory mode accepts actual model states, allowing a token's contextual representation to be followed across successive transformer layers. The current open-source implementation includes a reproducible BERT-base demonstration comparing the hidden-state trajectory of the word 'jaguar' in animal and automobile contexts. The two trajectories are projected through a shared PCA basis, placing them in the same three-dimensional coordinate system and allowing their projected relative positions to be compared. TURTLE therefore provides both an explanatory metaphor and an experimental visualization method for studying change in high-dimensional neural representations. Its principal limitations arise from dimensionality reduction, basis dependence in coordinate walks, and the risk of over-interpreting visual similarity.
 
+## Application interface
+
+![Glyph mode turns the displayed 768-dimensional vector into a three-dimensional turtle path using a 45-degree consecutive angle.](figures/screenshot-01.png)
+
+*Glyph mode turns the displayed 768-dimensional vector into a three-dimensional turtle path using a 45-degree consecutive angle.*
+
+![Geometric mode displays the n-dimensional walk projected into three dimensions by PCA.](figures/screenshot-02.png)
+
+*Geometric mode displays the n-dimensional walk projected into three dimensions by PCA.*
+
+![Trajectory mode displays bundled BERT hidden states for jaguar in animal and automobile contexts using a shared PCA projection.](figures/screenshot-03.png)
+
+*Trajectory mode displays bundled BERT hidden states for jaguar in animal and automobile contexts using a shared PCA projection.*
+
+![Glyph mode after changing the consecutive angle to 90 degrees, illustrating how the same encoding controls alter the displayed path.](figures/screenshot-04.png)
+
+*Glyph mode after changing the consecutive angle to 90 degrees, illustrating how the same encoding controls alter the displayed path.*
+
 ## Introduction
 
 Modern language models encode words, tokens, and contextual states as vectors with hundreds or thousands of numerical dimensions. These representations are computationally tractable but visually inaccessible. Researchers commonly use dimensionality-reduction techniques such as principal component analysis to create two- or three-dimensional views of high-dimensional data, but the resulting scatterplots tend to emphasize static positions. They are less naturally suited to communicating how a representation changes as a model processes context or as a token passes through successive network layers.
@@ -70,9 +88,6 @@ $$\Delta h^{(l)}=h^{(l+1)}-h^{(l)}.$$
 
 Here the order is intrinsic to the computation: layer l precedes layer $l+1$. Prior work has shown that contextual representations change substantially across contexts and layers, and has found evidence that different kinds of linguistic information are distributed differently across BERT's depth [3](#ref-ethayarajh); [8](#ref-tenney). TURTLE provides a direct geometric visualization of such layerwise change rather than reducing each state to an isolated point without an explicit path.
 
-![A coordinate walk ends at the original vector](figures/illustration-02.png)
-
-*Illustration 2. Coordinate-walk construction, shown symbolically rather than as measured model data. Permuting coordinates changes the chosen path even though its endpoint remains the input vector.*
 
 ## Proof-of-Concept: Contextual Trajectories in BERT
 
@@ -84,9 +99,6 @@ For comparative visualization, TURTLE does not fit PCA separately to the two con
 
 The demonstration should not be interpreted as evidence that three dimensions recover the full geometry of BERT's 768-dimensional hidden states. Its purpose is narrower: to show that TURTLE can accept genuine model representations, preserve their computational ordering, and render their transformations as an inspectable path. The most important object remains the original high-dimensional trajectory; the three-dimensional view is an interface to it.
 
-![Compare trajectories in one shared basis](figures/illustration-03.png)
-
-*Illustration 3. Shared-PCA workflow for the reported BERT jaguar demonstration. Independent PCA fits would create unrelated coordinate systems and undermine direct visual comparison.*
 
 ## Implementation
 
@@ -119,9 +131,6 @@ split the projected matrix back into H_1,...,H_m paths
 return comparable 3D trajectories
 ```
 
-![Layer order supplies the trajectory](figures/illustration-04.png)
-
-*Illustration 4. Trajectory-mode schematic. Each vertex is a token representation from an actual stage of the model; the arrows indicate successive state differences, not semantic labels for dimensions.*
 
 ## Potential Research Applications
 
@@ -131,9 +140,6 @@ The framework is also compatible with richer measurements than simple visual ins
 
 A further application is pedagogical. Conventional diagrams often present embeddings as static dots in a semantic map. TURTLE instead foregrounds movement: representations occupy positions, transformations create displacements, and sequences of transformations create trajectories. This can provide an intuitive bridge from elementary vector arithmetic to the layerwise dynamics of transformer models.
 
-![Separate measurement from the displayed shadow](figures/illustration-05.png)
-
-*Illustration 5. Interpretation guide. The projection is lossy and is an aid to exploration; quantitative geometric claims should be checked in the original representation space.*
 
 ## Limitations and Scientific Cautions
 
